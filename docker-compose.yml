@@ -6,6 +6,7 @@ volumes:
 services:
   php:
     build: ./build/php
+    restart: always
     ports:
       - 80:80
     volumes:
