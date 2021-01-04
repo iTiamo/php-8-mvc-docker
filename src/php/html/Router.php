@@ -4,6 +4,7 @@
 // This is a basic router for our MVC app
 
 define("ROOT_DIR", realpath(join(DIRECTORY_SEPARATOR, [__DIR__, ".."])));
+require join(DIRECTORY_SEPARATOR, [ROOT_DIR, "Configuration.php"]);
 
 // Includes models & controllers
 spl_autoload_register(function ($class) {
@@ -20,7 +21,6 @@ spl_autoload_register(function ($class) {
 });
 
 // Includes services
-require join(DIRECTORY_SEPARATOR, [SERVICES_DIR, "Configuration.php"]);
 require join(DIRECTORY_SEPARATOR, [SERVICES_DIR, "Database.php"]);
 
 // Gets routing details

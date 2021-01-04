@@ -1,9 +1,5 @@
 version: '3.8'
 
-secrets:
-  secrets:
-    file: secrets.yml
-
 volumes:
   data:
 
@@ -23,10 +19,10 @@ services:
     restart: always
     ports:
       - 3306:3306
-    secrets:
-      - secrets
     volumes:
       - data:/var/lib/mysql
+    env_file:
+      ./build/db/db.env
 
   adminer:
     image: adminer
