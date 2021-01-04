@@ -1,0 +1,35 @@
+version: '3.8'
+
+secrets:
+  secrets:
+    file: secrets.yml
+
+volumes:
+  data:
+
+services:
+  php:
+    build: ./build/php
+    ports:
+      - 80:80
+    volumes:
+      - ./src/php:/var/www
+    environment:
+      # Set XDEBUG_MODE to "off" for Production-ready application
+      XDEBUG_MODE: develop,debug
+
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    secrets:
+      - secrets
+    volumes:
+      - data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
